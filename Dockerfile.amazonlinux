@@ -1,0 +1,20 @@
+FROM 137112412989.dkr.ecr.us-east-1.amazonaws.com/amazonlinux
+MAINTAINER https://github.com/johnpreston
+
+# 1. Upgrade packages
+# 2. Install linux tools (useradd,groupadd and others)
+# 3. Install python3
+# 4. Install pip from pypa
+# 5. Clean package manager cache
+
+RUN yum upgrade -y ;\
+    yum install -y shadow-utils ;\
+    yum install -y python3 ;\
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3 ;\
+    yum clean all ;\
+    rm -rfv /var/cache/yum ;\
+    unlink /usr/bin/python;\
+    ln -s /usr/bin/python3 /usr/bin/python
+
+LABEL runtime=python
+LABEL version=3.7.6
