@@ -1,4 +1,4 @@
-FROM 137112412989.dkr.ecr.us-east-1.amazonaws.com/amazonlinux
+FROM amazonlinux:latest
 MAINTAINER https://github.com/johnpreston
 
 # 1. Upgrade packages
